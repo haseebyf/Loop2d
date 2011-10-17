@@ -257,6 +257,7 @@
 		ADF3AD2E144C935900B7DF92 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF3AD22144C935900B7DF92 /* CJSONScanner.m */; };
 		ADF3AD2F144C935900B7DF92 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF3AD24144C935900B7DF92 /* CJSONSerializer.m */; };
 		ADF3AD35144C939600B7DF92 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF3AD34144C939600B7DF92 /* Reachability.m */; };
+		ADF3AD51144C9AF000B7DF92 /* README in Resources */ = {isa = PBXBuildFile; fileRef = ADF3AD50144C9AF000B7DF92 /* README */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -796,6 +797,7 @@
 		ADF3AD25144C935900B7DF92 /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
 		ADF3AD33144C939600B7DF92 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		ADF3AD34144C939600B7DF92 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		ADF3AD50144C9AF000B7DF92 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1593,6 +1595,7 @@
 		ADC98ED7141A3A040060C8DE /* extra */ = {
 			isa = PBXGroup;
 			children = (
+				ADF3AD50144C9AF000B7DF92 /* README */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -2274,6 +2277,7 @@
 				AD3A08F11430ABC70025EE10 /* Rakefile in Resources */,
 				AD3A08FA1430ABC70025EE10 /* yajl-1.0.9.tar.gz in Resources */,
 				AD3A091C1430ABC70025EE10 /* project.rake in Resources */,
+				ADF3AD51144C9AF000B7DF92 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
