@@ -1,0 +1,62 @@
+waxClass{"FFServerBusinessLua", FFServerBusiness}
+
+
+-- ***************************************************
+function init(self)
+	print("FFServerBusinessLua init");
+	self.super:init()
+	return self
+end
+
+
+function downloadStoryListForCategory_andFilters_andPage(self, category, filterDict, page) 
+	return self.super:downloadStoryListForCategory_andFilters_andPage(category,filterDict,page);
+end
+-- (NSArray*)downloadStoryListForCategory:(Category*)category andFilters:(NSDictionary*)filterDict andPage:(NSInteger)page {
+
+--[[ ***************************************************
+function makeStory_fromDictionary(self,story,dict)
+	local result = "";
+	if story ~= nil then
+		print("###Parse first and last###");
+		local chapter1 = dict["1"];
+		print("###Extract the chapters###");
+		local chapterTitles = NSMutableArray:init()
+		local matchArray = toobjc(chapter1):componentsMatchedByRegex("(?ism)<SELECT title='chapter navigation' Name=chapter onChange=\".+?\">(<option.*?)<\\/select>");
+		if matchArray ~= nil and toobjc(matchArray):count() > 0 then
+			local storyStr = matchArray[1]
+			local chaptersArray = toobjc(storyStr):componentsMatchedByRegex("(?ism)<option  value=[0-9]+ (selected)?>([0-9]+). (.+?)(?=<option|$)");
+			for key,chapterStr in ipairs(chaptersArray) do
+				local chapterArray = toobjc(chapterStr):captureComponentsMatchedByRegex("(?ism)<option  value=[0-9]+ (selected)?>([0-9]+). (.+?)(?=<option|$)");
+				table.insert(chapterTitles,chapterArray[4]);
+			end
+		else
+			table.insert(chapterTitles,"Chapter 1");
+		end		
+		
+		print("###Create all chapters###");
+		print(chapterTitles);
+		local err = nil;
+		local chapters = "";
+		local chapterFormat = NSString:stringWithContentsOfFile(Helper:resourcePath("chapter.html"));
+		local chapterNumber = 1;
+		for key,chapterTitle in ipairs(chapterTitles) do
+			print("Making chapter:"..chapterNumber);
+			local chapterHtml = dict[""..(chapterNumber)];
+			-- Parse Chapter
+			local chapterArray = toobjc(chapterHtml):captureComponentsMatchedByRegex("(?ism)<div id=storytext class=storytext>.*?<\\/div>(.+?)<\\/div>");
+			local chapterString = chapterArray[2];
+			-- Create chapter
+			chapters = chapters .. string.format(chapterFormat,chapterTitle,chapterString);
+			chapterNumber=chapterNumber+1;
+		end
+		print("###Create the story###");
+		local storyFormat = NSString:stringWithContentsOfFile(Helper:resourcePath("story.html"));
+		-- print(chapters);
+		result = string.format(storyFormat, story:title(), story:author(), chapters);
+		--print(result);
+		print("done")
+	end
+	return toobjc(result);
+end
+--]]

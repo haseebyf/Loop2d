@@ -1,0 +1,26 @@
+//
+// Prefix header for all source files of the 'Loop' target in the 'Loop' project
+//
+
+#ifdef __OBJC__
+// Frameworks
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+// Libraries
+#import "PLib.h"
+
+
+// Business
+#import "ApplicationManager.h"
+
+
+
+// DTO
+#import "Update.h"
+
+
+// Util
+#import "Constant.h"
+
+#endif
