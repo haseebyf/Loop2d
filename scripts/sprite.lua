@@ -42,7 +42,7 @@ local mt = {
 -- ===========================================================
 -- Positioning
 -- ===========================================================
-local positioning_getters = {
+local getters = {
   x = function(self)
     local cc = getmetatable(self).priv.__cc
 	return cc:position().x
@@ -53,7 +53,7 @@ local positioning_getters = {
   end
 }
 
-local positioning_setters = {
+local setters = {
   x = function(self, v)
     local cc = getmetatable(self).priv.__cc
     cc:setPosition(CGPoint(v,cc:position().y))
@@ -67,22 +67,22 @@ local positioning_setters = {
 -- ===========================================================
 -- Transparancy
 -- ===========================================================
-positioning_getters["alpha"] =  function(self)
+getters["alpha"] =  function(self)
     local cc = getmetatable(self).priv.__cc
 	return cc:alpha()
 end
 
-positioning_getters["alpha"] = function(self, v)
+setters["alpha"] = function(self, v)
     local cc = getmetatable(self).priv.__cc
     cc:setAlpha(v)
 end
 
-positioning_getters["isVisible"] =  function(self)
+getters["isVisible"] =  function(self)
     local cc = getmetatable(self).priv.__cc
 	return cc:visible()
 end
 
-positioning_getters["isVisible"] = function(self, v)
+setters["isVisible"] = function(self, v)
     local cc = getmetatable(self).priv.__cc
     cc:setVisible(v)
 end
@@ -93,18 +93,18 @@ end
 -- Size
 -- ===========================================================
 -- content bounds
-positioning_getters["contentBounds"] =  function(self)
+getters["contentBounds"] =  function(self)
     local cc = getmetatable(self).priv.__cc
 	return cc:boundingBox()
 end
 
-positioning_getters["contentBounds"] = function(self, v)
+setters["contentBounds"] = function(self, v)
     local cc = getmetatable(self).priv.__cc
     cc:setBoundingBox(v)
 end
 
 -- content bounds
-positioning_getters["contentHeight"] =  function(self)
+getters["contentHeight"] =  function(self)
     local cc = getmetatable(self).priv.__cc
 	return cc:boundingBox().height
 end
@@ -116,34 +116,127 @@ end
 --]]
 
 -- content width
-positioning_getters["contentWidth"] =  function(self)
+getters["contentWidth"] =  function(self)
     local cc = getmetatable(self).priv.__cc
 	return cc:contentSize().width
 end
 
 -- height
-positioning_getters["height"] =  function(self)
+getters["height"] =  function(self)
     local cc = getmetatable(self).priv.__cc
 	return cc:contentSize().width
 end
 
-positioning_getters["height"] = function(self, v)
+setters["height"] = function(self, v)
     local cc = getmetatable(self).priv.__cc
     cc:setContentSize(CGSize(v, cc:contentSize().height))
 end
 
 -- width
-positioning_getters["width"] =  function(self)
+getters["width"] =  function(self)
     local cc = getmetatable(self).priv.__cc
 	return cc:contentSize().width
 end
 
-positioning_getters["width"] = function(self, v)
+setters["width"] = function(self, v)
     local cc = getmetatable(self).priv.__cc
 	cc:setContentSize(CGSize(cc:contentSize().width, v))
 end
 
+-- ===========================================================
+-- scaling
+-- ===========================================================
+getters["scaleX"] =  function(self)
+    local cc = getmetatable(self).priv.__cc
+	return cc:scaleX()
+end
 
+setters["scaleX"] = function(self, v)
+    local cc = getmetatable(self).priv.__cc
+	cc:setScaleX(v)
+end
+
+getters["scaleY"] =  function(self)
+    local cc = getmetatable(self).priv.__cc
+	return cc:scaleY()
+end
+
+setters["scaleY"] = function(self, v)
+    local cc = getmetatable(self).priv.__cc
+	cc:setScaleY(v)
+end
+
+-- ===========================================================
+-- rotation
+-- ===========================================================
+getters["rotation"] =  function(self)
+    local cc = getmetatable(self).priv.__cc
+	return cc:rotation()
+end
+
+setters["rotation"] = function(self, v)
+    local cc = getmetatable(self).priv.__cc
+	cc:setRotation(v)
+end
+
+
+-- ===========================================================
+-- positioning
+-- ===========================================================
+-- x 
+getters["x"] =  function(self)
+    local cc = getmetatable(self).priv.__cc
+	return cc:rotation()
+end
+
+setters["x"] = function(self, v)
+    local cc = getmetatable(self).priv.__cc
+	cc:setRotation(v)
+end
+
+-- y
+getters["x"] =  function(self)
+    local cc = getmetatable(self).priv.__cc
+	return cc:rotation()
+end
+
+setters["x"] = function(self, v)
+    local cc = getmetatable(self).priv.__cc
+	cc:setRotation(v)
+end
+
+-- xOrigin
+getters["xOrigin"] =  function(self)
+    local cc = getmetatable(self).priv.__cc
+	return cc:rotation()
+end
+
+setters["xOrigin"] = function(self, v)
+    local cc = getmetatable(self).priv.__cc
+	cc:setRotation(v)
+end
+
+-- yOrigin
+getters["yOrigin"] =  function(self)
+    local cc = getmetatable(self).priv.__cc
+	return cc:rotation()
+end
+
+setters["yOrigin"] = function(self, v)
+    local cc = getmetatable(self).priv.__cc
+	cc:setRotation(v)
+end
+
+-- xReference
+getters["xReference"] =  function(self)
+    local cc = getmetatable(self).priv.__cc
+	return cc:rotation()
+end
+
+setters["xReference"] = function(self, v)
+    local cc = getmetatable(self).priv.__cc
+	cc:setRotation(v)
+end
 
 
 -- ===========================================================
@@ -152,7 +245,7 @@ end
 function sprite.new(self, filename)
 	local aSprite = CCSprite:spriteWithFile(filename)
 	local priv = {__cc = aSprite}
-	local self = make_proxy(sprite, priv, positioning_getters, positioning_setters, true)
+	local self = make_proxy(sprite, priv, getters, setters, true)
 	return self;
 end
 
