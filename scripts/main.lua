@@ -1,13 +1,7 @@
 require "loop2d"
+require "IntroScreen"
 
+loop2d:initEngine()
 
-
-local scene =  HelloWorldLayer:scene()
-director.showScene(scene);
-
-local background = sprite:new("Default.png")
-
-background.x = 300
-background.y = 300
-
-scene:addChild(background.__cc);
+screen  = IntroScene{}
+director.showScene(screen)

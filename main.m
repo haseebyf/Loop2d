@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 	[[ApplicationManager sharedApplicationManager] initializeBaseVersionScripts];
 	[[ApplicationManager sharedApplicationManager] beginUpdate];
 	wax_start("", luaopen_wax_http, luaopen_wax_json, luaopen_wax_xml, nil);
-	//[[ApplicationManager sharedApplicationManager] loadScripts];
+	[[ApplicationManager sharedApplicationManager] loadScripts];
 	/*
 	Class klass = NSClassFromString(@"AppDelegateLua");
 	NSString* delegateNameStr = @"AppDelegate";

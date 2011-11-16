@@ -6,14 +6,20 @@
 // Frameworks
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 // Libraries
-#import "PLib.h"
-
+#import "CJSONDeserializer.h"			// [TouchJSON,]
+#import "CCButton.h"					// [Pentaloop, http://www.pentaloop.com]
+#import "ASIHTTPRequest.h"				// [ASIHTTPRequest,]
+#import "PLUserDefaults.h"				// [Pentaloop, http://www.pentaloop.com]
+#import "DDLog.h"						// [LumberJack, https://github.com/robbiehanson/CocoaLumberjack]
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
 
 // Business
 #import "ApplicationManager.h"
-
+#import "PLLayer.h"
 
 
 // DTO
@@ -22,5 +28,10 @@
 
 // Util
 #import "Constant.h"
+#import "CCNode+Scaling.h"
+#import "Helper.h"
+#import "PLMacros.h"
+#import "PLLogger.h"
+#import "PLConfig.h"
 
 #endif

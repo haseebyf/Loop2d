@@ -6,8 +6,14 @@
 //  Copyright Penta::Loop inc. 2011. All rights reserved.
 //
 
-#ifndef __GAME_CONFIG_H
-#define __GAME_CONFIG_H
+#ifndef __PLCONFIG_H
+#define __PLCONFIG_H
+
+
+// ============================================================
+#pragma mark -
+#pragma mark Cocos2d configuration
+// ============================================================
 
 //
 // Supported Autorotations:
@@ -41,5 +47,15 @@
 #error(unknown architecture)
 #endif
 
-#endif // __GAME_CONFIG_H
+// ============================================================
+#pragma mark -
+#pragma mark Logger configuration
+// ============================================================
+#ifndef DEBUG
+	#define APP_LOG_LEVEL LOG_LEVEL_OFF
+#else
+	#define APP_LOG_LEVEL LOG_LEVEL_VERBOSE;
+#endif
+
+#endif // __PLCONFIG_H
 

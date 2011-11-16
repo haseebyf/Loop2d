@@ -62,7 +62,7 @@ typedef struct AccelerationStruct {
 +(NSArray*) getImageArray:(NSString*)firstArg, ... ;
 
 +(NSString*) infinitySymbol;
-+(void) exchange:(NSMutableArray*) array objectAtIndex:(NSInteger) index to:(id) newValue;
++(void) exchange:(NSMutableArray*)array objectAtIndex:(NSInteger) index to:(id) newValue;
 
 +(void) prepareAnimation: (NSTimeInterval) duration;
 +(void) commitAnimation;

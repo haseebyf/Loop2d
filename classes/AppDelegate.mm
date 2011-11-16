@@ -9,9 +9,10 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "GameConfig.h"
 #import "HelloWorldLayer.h"
 #import "RootViewController.h"
+
+#import "CCButtonTest.h"
 
 #import "wax.h"
 #import "wax_http.h"
@@ -47,6 +48,9 @@
 
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
+	// Init Logger
+	[DDLog addLogger:[DDTTYLogger sharedInstance]];	
+	
 	// Init the window
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
@@ -115,14 +119,18 @@
 	
 	// Removes the startup flicker
 	[self removeStartupFlicker];
-
+#define EXECUTE_TEST 0
+#if EXECUTE_TEST
+	// Run the intro Scene
+	//[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
+	[[CCDirector sharedDirector] runWithScene: [CCButtonTest scene]];
+#else
 	// Start lua
 	lua_State *L = wax_currentLuaState();
     if (luaL_dofile(L, [[[ApplicationManager scriptPath] stringByAppendingPathComponent:@"main.lua"] UTF8String]) != 0) {
         fprintf(stderr,"Fatal error opening wax scripts: %s\n", lua_tostring(L,-1));
     }
-	// Run the intro Scene
-	//[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
+#endif
 }
 
 

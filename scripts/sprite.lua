@@ -1,8 +1,8 @@
-require "PropertyHelper"
+--require "loop2d"
 -- ===========================================================
 -- Defining the package
 -- ===========================================================
-sprite = { }
+sprite = lua.class({__cc = nil}, node)
 -- sprite.__index = sprite
 
 -- ===========================================================
@@ -42,27 +42,9 @@ local mt = {
 -- ===========================================================
 -- Positioning
 -- ===========================================================
-local getters = {
-  x = function(self)
-    local cc = getmetatable(self).priv.__cc
-	return cc:position().x
-  end,
-  y = function(self)
-    local cc = getmetatable(self).priv.__cc
-	return cc:position().y
-  end
-}
+local getters = {}
 
-local setters = {
-  x = function(self, v)
-    local cc = getmetatable(self).priv.__cc
-    cc:setPosition(CGPoint(v,cc:position().y))
-  end,
-  y = function(self, v)
-    local cc = getmetatable(self).priv.__cc
-    cc:setPosition(CGPoint(cc:position().x, v))
-  end
-}
+local setters = {}
 
 -- ===========================================================
 -- Transparancy
@@ -147,22 +129,22 @@ end
 -- scaling
 -- ===========================================================
 getters["scaleX"] =  function(self)
-    local cc = getmetatable(self).priv.__cc
+	local cc = self.__cc
 	return cc:scaleX()
 end
 
 setters["scaleX"] = function(self, v)
-    local cc = getmetatable(self).priv.__cc
+    local cc = self.__cc
 	cc:setScaleX(v)
 end
 
 getters["scaleY"] =  function(self)
-    local cc = getmetatable(self).priv.__cc
+    local cc = self.__cc
 	return cc:scaleY()
 end
 
 setters["scaleY"] = function(self, v)
-    local cc = getmetatable(self).priv.__cc
+    local cc = self.__cc
 	cc:setScaleY(v)
 end
 
@@ -170,12 +152,12 @@ end
 -- rotation
 -- ===========================================================
 getters["rotation"] =  function(self)
-    local cc = getmetatable(self).priv.__cc
-	return cc:rotation()
+    local cc = self.__cc
+	return cc:rotation().x
 end
 
 setters["rotation"] = function(self, v)
-    local cc = getmetatable(self).priv.__cc
+    local cc = self.__cc
 	cc:setRotation(v)
 end
 
@@ -185,24 +167,35 @@ end
 -- ===========================================================
 -- x 
 getters["x"] =  function(self)
-    local cc = getmetatable(self).priv.__cc
-	return cc:rotation()
+    local cc = self.__cc
+	return cc:position().x
 end
 
 setters["x"] = function(self, v)
-    local cc = getmetatable(self).priv.__cc
-	cc:setRotation(v)
+    local cc = self.__cc
+	cc:setPosition(CGPoint(v,cc:position().y))
 end
 
 -- y
-getters["x"] =  function(self)
-    local cc = getmetatable(self).priv.__cc
-	return cc:rotation()
+getters["y"] =  function(self)
+    local cc = self.__cc
+	return cc:position().y
 end
 
-setters["x"] = function(self, v)
-    local cc = getmetatable(self).priv.__cc
-	cc:setRotation(v)
+setters["y"] = function(self, v)
+    local cc = self.__cc
+	cc:setPosition(CGPoint(cc:position().x,v))
+end
+
+-- position
+getters["position"] =  function(self)
+    local cc = self.__cc
+	return cc:position()
+end
+
+setters["position"] = function(self, v)
+    local cc = self.__cc
+	cc:setPosition(CGPoint(v.x,v.y))
 end
 
 -- xOrigin
@@ -238,15 +231,32 @@ setters["xReference"] = function(self, v)
 	cc:setRotation(v)
 end
 
+-- ===========================================================
+-- Actions
+-- ===========================================================
+function sprite:runAction(anAction)
+	print(table.tostring(anAction.__cc))
+	self.__cc:runAction(anAction.__cc)
+end
 
 -- ===========================================================
 -- Initialization
 -- ===========================================================
-function sprite.new(self, filename)
+function sprite:__init(filename)
+	print("sprite.__init() : START")
 	local aSprite = CCSprite:spriteWithFile(filename)
-	local priv = {__cc = aSprite}
-	local self = make_proxy(sprite, priv, getters, setters, true)
-	return self;
+	local newInstance = lua.rawnew(self, {__cc = aSprite})
+	newInstance = make_proxy(newInstance, {}, getters, setters, false)
+	aSprite.scene = newInstance
+	print("sprite.__init() : END")
+	return newInstance
+
+
+	--local newInstance = make_proxy(sprite, {}, getters, setters, false)
+	--local aSprite = CCSprite:spriteWithFile(filename)
+	--newInstance.__cc = aSprite
+	--newInstance.__cc.scene = newInstance
+	--return newInstance;
 end
 
 

@@ -16,7 +16,7 @@
 -- @version 3 - 20060921 (D.Manura)
 function make_proxy(class, priv, getters, setters, is_expose_private)
   setmetatable(priv, class)  -- fallback priv lookups to class
-  local fallback = is_expose_private and priv or class
+  local fallback = class or is_expose_private and priv
   local index = getters and
     function(self, key)
       -- read from getter, else from fallback

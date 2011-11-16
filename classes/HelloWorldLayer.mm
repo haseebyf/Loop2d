@@ -139,6 +139,7 @@ enum {
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	
 	world->DrawDebugData();
+	//[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:10 scene: withColor:]
 	
 	// restore default GL states
 	glEnable(GL_TEXTURE_2D);
@@ -152,7 +153,15 @@ enum {
 	CCLOG(@"Add sprite %0.2f x %02.f",p.x,p.y);
 	CCSpriteBatchNode *batch = (CCSpriteBatchNode*) [self getChildByTag:kTagBatchNode];
 	
-	
+	//CCRotateBy actionWithDuration: angle:]
+	//[batch runAction:]
+	//[CCRepeatForever actionWithAction:]
+	//CCRepeat 
+	//[CCFadeIn actionWithDuration:]
+	//CCSpawn
+	//[CCSequence actions:<#(CCFiniteTimeAction *)action1#> ]
+	//CCEaseIn
+	//CCCallFunc
 	//We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
 	//just randomly picking one of the images
 	int idx = (CCRANDOM_0_1() > .5 ? 0:1);

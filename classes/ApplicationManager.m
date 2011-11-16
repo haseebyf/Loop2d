@@ -22,6 +22,7 @@
 #pragma mark CONSTANTS
 //=========================================================================
 SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationManager);
+static const int ddLogLevel = APP_LOG_LEVEL;
 #define kPLConfigurationApplicationVersion @"com.pentaloop.applicationVersion"
 #define kPLApplicationManagerBaseVersionInitialized [NSString stringWithFormat:@"com.pentaloop.%@.baseVersionInitialized", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]]
 //=========================================================================
@@ -58,7 +59,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationManager);
 		
 		NSArray *fileNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:srcPath error:nil];
 		for (NSString * fileName in fileNames) {
-			if ([fileName rangeOfString:@"\\.(lua|dat)$" options:NSRegularExpressionSearch|NSCaseInsensitiveSearch].length != 0) {
+			if ([fileName rangeOfString:@"\\.(lua|dat|plist)$" options:NSRegularExpressionSearch|NSCaseInsensitiveSearch].length != 0) {
 				NSString* srcFile = [srcPath stringByAppendingPathComponent:fileName];
 				NSString* destFile = [destPath stringByAppendingPathComponent:fileName];
 				Log(@"Copying %@ to %@",fileName, destPath);
@@ -67,7 +68,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationManager);
 				}
 				[[NSFileManager defaultManager] copyItemAtPath:srcFile toPath:destFile error:&error];
 				Log(@"Result:%@",error);
+			} else if ([Helper folderExistsWithPath:[srcPath stringByAppendingPathComponent:fileName]]) {
+				NSError* error = nil;
+				Log(@"Copying %@ to %@",fileName, destPath);
+				[[NSFileManager defaultManager] moveItemAtPath:[srcPath stringByAppendingPathComponent:fileName] toPath:[destPath stringByAppendingPathComponent:fileName] error:&error];
+				Log(@"Result:%@",error);
 			}
+
 		}
 		[[PLUserDefaults sharedPLUserDefaults] setBool:YES forKey:kPLApplicationManagerBaseVersionInitialized];
 		[[PLUserDefaults sharedPLUserDefaults] setString:version forKey:kPLConfigurationApplicationVersion];
@@ -77,11 +84,33 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationManager);
 
 -(void)loadScripts {
 	//LogStart;
-	NSString* path = [NSString stringWithFormat:@"%@/%@/scripts/",[Helper  applicationDocumentsDirectory], self.currentApplicationVersion];
-	NSArray *fileNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
+	//NSString* path = [NSString stringWithFormat:@"%@/%@/scripts/",[Helper  applicationDocumentsDirectory], self.currentApplicationVersion];
+	//NSArray *fileNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:nil];
+	NSString* loop2dClassesPlistPath = [[ApplicationManager scriptPath] stringByAppendingPathComponent:@"loop2dClasses.plist"];
+	NSString* classesPlistPath = [[ApplicationManager scriptPath] stringByAppendingPathComponent:@"classes.plist"];
+	
+	NSMutableArray* fileNames = [[NSMutableArray alloc] init];	
+	NSDictionary *dict = [[NSDictionary alloc] initWithContentsOfFile:loop2dClassesPlistPath];
+	if (dict) {
+		NSArray* classesList = [dict objectForKey:@"classes"];
+		if (classesList) {
+			[fileNames addObjectsFromArray:classesList];
+		}
+		safeRelease(dict)
+	}
+	dict = [[NSDictionary alloc] initWithContentsOfFile:classesPlistPath];
+	if (dict) {
+		NSArray* classesList = [dict objectForKey:@"classes"];
+		if (classesList) {
+			[fileNames addObjectsFromArray:classesList];
+		}
+		safeRelease(dict)
+	}
+	
+	// Now loading the classes
 	for (NSString * fileName in fileNames) {
 		if ([fileName rangeOfString:@"\\.(lua|dat)$" options:NSRegularExpressionSearch|NSCaseInsensitiveSearch].length != 0) {
-			NSString* filePath = [path stringByAppendingPathComponent:fileName];
+			NSString* filePath = [[ApplicationManager scriptPath] stringByAppendingPathComponent:fileName];
 			lua_State *L = wax_currentLuaState();
 			Log(@"Loading class:%@",filePath);
 			if(luaL_dofile(L, [filePath cStringUsingEncoding:NSASCIIStringEncoding]) != 0) {
@@ -89,6 +118,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ApplicationManager);
 			}
 		}
 	}
+	safeRelease(fileNames);
 	//LogEnd;
 }
 

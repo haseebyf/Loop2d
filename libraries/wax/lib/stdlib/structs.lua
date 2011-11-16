@@ -9,3 +9,9 @@ wax.struct.create("CLLocationCoordinate2D", "dd", "latitude", "longitude")
 wax.struct.create("MKCoordinateSpan", "dd", "latitudeDelta", "longitudeDelta")
 wax.struct.create("MKCoordinateRegion", "dddd", "latitude", "longitude", "latitudeDelta", "longitudeDelta")
 wax.struct.create("CGAffineTransform", "ffffff", "a", "b", "c", "d", "tx", "ty")
+
+
+wax.struct.create("CGAffineTransform", "ffffff", "a", "b", "c", "d", "tx", "ty")
+
+-- Loop2d
+wax.struct.create("point", "ff", "x", "y")

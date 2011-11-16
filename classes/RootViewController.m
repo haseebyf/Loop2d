@@ -14,7 +14,7 @@
 #import "cocos2d.h"
 
 #import "RootViewController.h"
-#import "GameConfig.h"
+#import "PLConfig.h"
 
 @implementation RootViewController
 
