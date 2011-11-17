@@ -15,3 +15,5 @@ wax.struct.create("CGAffineTransform", "ffffff", "a", "b", "c", "d", "tx", "ty")
 
 -- Loop2d
 wax.struct.create("point", "ff", "x", "y")
+wax.struct.create("rect", "ffff", "x", "y", "width", "height")
+wax.struct.create("size", "ff", "width", "height")

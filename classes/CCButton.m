@@ -234,7 +234,7 @@ static const int ddLogLevel = APP_LOG_LEVEL;
 		// Change button state
 		[self setButtonState:CCButtonStateHighlighted];
 		// Call selector
-		DDLogVerbose("ButtonDown");
+		DDLogVerbose(@"ButtonDown");
 		if (touchDownInsideTarget && touchDownInsideSelector) {
 			if ([touchDownInsideTarget respondsToSelector:touchDownInsideSelector]) {
 				[touchDownInsideTarget performSelectorOnMainThread:touchDownInsideSelector withObject:self waitUntilDone:YES];
@@ -273,7 +273,7 @@ static const int ddLogLevel = APP_LOG_LEVEL;
 	// Change button state
 	[self setButtonState:CCButtonStateNormal];
 	// Call selector
-	DDLogVerbose("ButtonUp");
+	DDLogVerbose(@"ButtonUp");
 	if (touchUpInsideTarget && touchUpInsideSelector) {
 		if ([touchUpInsideTarget respondsToSelector:touchUpInsideSelector]) {
 			[touchUpInsideTarget performSelectorOnMainThread:touchUpInsideSelector withObject:self waitUntilDone:YES];

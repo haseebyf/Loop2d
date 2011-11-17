@@ -42,8 +42,7 @@ function MenuScene:onEnter()
 	newGear:runAction(newAction)
 	--newGear:runAction(action("RotateBy", 0, {duration=2, angle=180}))
 	-- Setting the play button
-	local playButton = button(CGRect(100,100,100,100))
-	playButton.x = 500
+	local playButton = button(CGRect(50,50,50,50))
 	self:addChild(playButton)
 
 

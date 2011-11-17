@@ -6,6 +6,7 @@ require "language"
 
 
 -- Logic
+require "node"
 require "action"
 require "sprite"
 require "scene"
