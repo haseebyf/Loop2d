@@ -1,4 +1,8 @@
-button = lua.class({}, sprite)
+button = lua.class( {
+						onPress = nil,
+						onRelease = nil,
+						onCancel = nil,
+					}, sprite)
 
 
 
@@ -10,8 +14,7 @@ function button:__init(aRect)
 	local aButton = PLButtonHelper:buttonWithFrame(CGRect(aRect.x, aRect.y, aRect.width, aRect.height))
 	print(table.tostring(aButton))
 	local newInstance = lua.rawnew(self, {__cc = aButton})
-	print(table.tostring(sprite.getters))
-	--newInstance = make_proxy(newInstance, {}, getters, setters, false)
+	newInstance = make_proxy(newInstance, {}, self.getters, self.setters, false)
 	aButton.__lp = newInstance
 	print("button:__init() : END")
 	return newInstance
