@@ -1,2 +1,24 @@
 Introduction
-Documentation under developmnet, any help is appretiated
+Loop2d is an open source framework for iOS game development. It is essentially a wrapper around Cocos2d. Loop2d is intended to make life easy for game developers. Loop2d is easy to use even for beginners.
+
+
+Powerful
+Loop2d gives developers easy to use scripting environment, but does not restrict from adding new components. If there is something not present in the existing library, then you can make your own in three different ways
+- Create extension in lua using existing component
+- Create extension in lua using wax classes
+- Create extension ObjC and then creat wax wrapper
+
+
+
+Architecture
+Lua uses wax lua engine to access Cocos2d interfaces in lua. Some wrapper classes have been created to assest this process both in lua and in ObjC. After that a library has been created on top of the raw Cocos2d interfaces to exploit the full potential of lua scripting language.
+
+
+
+Enhancements
+Some future enhancements that will come along are
+- Compiling lua to byte code in release builds
+- Compiling lua in LLVM using LLVM-LUA [http://code.google.com/p/llvm-lua/]
+
+
+Note: Loop2d is under active development. If you feel like you can help in any form then do drop me a message.
