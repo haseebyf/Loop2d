@@ -1,7 +1,7 @@
 require "loop2d"
-require "IntroScreen"
+require "MenuScreen"
 
 loop2d:initEngine()
 
-screen  = IntroScene{}
+screen  = MenuScene{}
 director.showScene(screen)

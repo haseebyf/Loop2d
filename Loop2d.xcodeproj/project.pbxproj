@@ -210,6 +210,10 @@
 		AD45D6051473676F00AB3DC1 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45D5FF1473676F00AB3DC1 /* DDLog.m */; };
 		AD45D6061473676F00AB3DC1 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45D6011473676F00AB3DC1 /* DDTTYLogger.m */; };
 		AD4AA4A3146EA72500BA8F12 /* CCNode+Scaling.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4AA4A2146EA72500BA8F12 /* CCNode+Scaling.m */; };
+		AD589A2B1475620100746857 /* SpriteTestScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = AD589A2A1475620100746857 /* SpriteTestScene.lua */; };
+		AD589A2D1475622E00746857 /* ButtonTestScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = AD589A2C1475622E00746857 /* ButtonTestScene.lua */; };
+		AD589A2F1475624400746857 /* VideoPlayerTestScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = AD589A2E1475624400746857 /* VideoPlayerTestScene.lua */; };
+		AD589A311475626500746857 /* TransitionTestScene.lua in Resources */ = {isa = PBXBuildFile; fileRef = AD589A301475626500746857 /* TransitionTestScene.lua */; };
 		ADA75EEA14721D1500214D06 /* classes.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADA75EE914721D1500214D06 /* classes.plist */; };
 		ADAD5B08146BF37700066A76 /* button.lua in Resources */ = {isa = PBXBuildFile; fileRef = ADAD5B07146BF37700066A76 /* button.lua */; };
 		ADB238011462B6E500B53415 /* intro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = ADB238001462B6E500B53415 /* intro.mp4 */; };
@@ -798,6 +802,10 @@
 		AD45D62314736AB600AB3DC1 /* PLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLLogger.h; sourceTree = "<group>"; };
 		AD4AA4A1146EA72500BA8F12 /* CCNode+Scaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCNode+Scaling.h"; sourceTree = "<group>"; };
 		AD4AA4A2146EA72500BA8F12 /* CCNode+Scaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCNode+Scaling.m"; sourceTree = "<group>"; };
+		AD589A2A1475620100746857 /* SpriteTestScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lua; path = SpriteTestScene.lua; sourceTree = "<group>"; };
+		AD589A2C1475622E00746857 /* ButtonTestScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lua; path = ButtonTestScene.lua; sourceTree = "<group>"; };
+		AD589A2E1475624400746857 /* VideoPlayerTestScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lua; path = VideoPlayerTestScene.lua; sourceTree = "<group>"; };
+		AD589A301475626500746857 /* TransitionTestScene.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lua; path = TransitionTestScene.lua; sourceTree = "<group>"; };
 		ADA75EE914721D1500214D06 /* classes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = classes.plist; sourceTree = "<group>"; };
 		ADAD5B07146BF37700066A76 /* button.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lua; path = button.lua; sourceTree = "<group>"; };
 		ADB235F91462566800B53415 /* videoPlayer.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.lua; path = videoPlayer.lua; sourceTree = "<group>"; };
@@ -1795,6 +1803,17 @@
 			name = helpers;
 			sourceTree = "<group>";
 		};
+		AD589A21147560ED00746857 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				AD589A2C1475622E00746857 /* ButtonTestScene.lua */,
+				AD589A2A1475620100746857 /* SpriteTestScene.lua */,
+				AD589A301475626500746857 /* TransitionTestScene.lua */,
+				AD589A2E1475624400746857 /* VideoPlayerTestScene.lua */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
 		AD95D6541431E42300563354 /* loop2d */ = {
 			isa = PBXGroup;
 			children = (
@@ -2064,6 +2083,7 @@
 			isa = PBXGroup;
 			children = (
 				AD95D6541431E42300563354 /* loop2d */,
+				AD589A21147560ED00746857 /* test */,
 				ADD9F6E9143082CD00C7DCD8 /* FFServerBusinessLua.luad */,
 				ADC1D30014594F7900676447 /* MenuScreen.lua */,
 				ADE6B3B91461748D008B276B /* IntroScreen.lua */,
@@ -2857,6 +2877,10 @@
 				ADBB9D15146D578B00493911 /* plcallfunchelper.lua in Resources */,
 				ADBDA5E9146E839D0006A298 /* plbuttonhelper.lua in Resources */,
 				ADA75EEA14721D1500214D06 /* classes.plist in Resources */,
+				AD589A2B1475620100746857 /* SpriteTestScene.lua in Resources */,
+				AD589A2D1475622E00746857 /* ButtonTestScene.lua in Resources */,
+				AD589A2F1475624400746857 /* VideoPlayerTestScene.lua in Resources */,
+				AD589A311475626500746857 /* TransitionTestScene.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

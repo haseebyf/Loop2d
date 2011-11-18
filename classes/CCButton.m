@@ -43,17 +43,6 @@ static const int ddLogLevel = APP_LOG_LEVEL;
 }
 
 
--(void)setScaleX:(float)aScale {
-	[super setScaleX:aScale];
-	//[self updateGui];
-}
-
--(void)setScaleY:(float)aScale {
-	[super setScaleY:aScale];
-	//[self updateGui];
-}
-
-
 -(void)setVisible:(BOOL)isVisible {
 	if (isVisible) {
 		[super setVisible:isVisible];
@@ -86,6 +75,7 @@ static const int ddLogLevel = APP_LOG_LEVEL;
 	// Setting default state sprites
 	backgroundSprite = [CCSprite node];
 	[backgroundSprite setColor:ccRED];
+	[self setColor:ccRED];
 	[self addChild:backgroundSprite z:-1];
 	// Setting default state
 	self.enabled = YES;

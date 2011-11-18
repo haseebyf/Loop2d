@@ -29,7 +29,7 @@ typedef enum _CCButtonState {
 #pragma mark -
 #pragma mark Interface
 //=========================================================================
-@interface CCButton : CCLayer <CCTargetedTouchDelegate> {
+@interface CCButton : CCSprite <CCTargetedTouchDelegate> {
 
 	// UI
 	CCSprite* backgroundSprite;
