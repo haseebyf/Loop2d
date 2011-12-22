@@ -156,6 +156,7 @@ end
 
 function action.sequence(repeatCount, ...)
 	--print("action.sequence() : END")
+	local arg = {...}
 	local actionList = {}
 	for i,v in ipairs(arg) do
 		assert(v.repeatCount > 0, "Sequence cannot contain an action with infinit repeatCount (repetitions = 0)")
@@ -181,6 +182,7 @@ end
 
 function action.complex(repeatCount, ...)
 	--print("action.sequence() : END")
+	local arg = {...}
 	local actionList = {}
 	for i,v in ipairs(arg) do
 		assert(v.repeatCount > 0, "Sequence cannot contain an action with infinit repeatCount (repetitions = 0)")

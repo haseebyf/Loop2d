@@ -18,7 +18,7 @@
 #import "wax_stdlib.h"
 
 #import "lauxlib.h"
-#import "lobject.h"
+//#import "lobject.h"
 #import "lualib.h"
 
 

@@ -9,6 +9,11 @@ Loop2d gives developers easy to use scripting environment, but does not restrict
 - Create extension ObjC and then creat wax wrapper
 
 
+### Performance
+Loop2d uses the LuaJIT engine to run lua scripts. The performance of LuaJIT can be seen here : http://luajit.org/performance_arm.html
+In short we get almost native code performance.
+
+
 
 ### Architecture
 Lua uses wax lua engine to access Cocos2d interfaces in lua. Some wrapper classes have been created to assest this process both in lua and in ObjC. After that a library has been created on top of the raw Cocos2d interfaces to exploit the full potential of lua scripting language.
@@ -18,7 +23,7 @@ Lua uses wax lua engine to access Cocos2d interfaces in lua. Some wrapper classe
 ### Enhancements
 Some future enhancements that will come along are
 - Compiling lua to byte code in release builds
-- Compiling lua in LLVM using LLVM-LUA [http://code.google.com/p/llvm-lua/]
+
 
 
 ### Note: Loop2d is under active development. If you feel like you can help in any form then do drop me a message.

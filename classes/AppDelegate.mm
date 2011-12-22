@@ -14,11 +14,11 @@
 
 #import "CCButtonTest.h"
 
+#import "lua.hpp"
 #import "wax.h"
 #import "wax_http.h"
 #import "wax_json.h"
 #import "wax_xml.h"
-#import "lauxlib.h"
 
 @implementation AppDelegate
 

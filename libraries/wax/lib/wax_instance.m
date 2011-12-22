@@ -13,7 +13,7 @@
 #import "wax_helpers.h"
 
 #import "lauxlib.h"
-#import "lobject.h"
+//#import "lobject.h"
 
 static int __index(lua_State *L);
 static int __newindex(lua_State *L);
